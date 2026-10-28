@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo | Jirafita Dreams</title>
+  <meta name="description" content="Catálogo de pijamas Jirafita Dreams. Elige tus favoritas y haz tu pedido por WhatsApp.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #2b3a78;
+      --navy-dark: #1b2559;
+      --pink: #f4a7b9;
+      --pink-deep: #d9708a;
+      --blush: #fde4ea;
+      --cream: #fffaf5;
+      --ink: #34344d;
+      --muted: #75758f;
+      --wa: #1f9d47;
+      --wa-dark: #187c38;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Nunito', 'Inter', system-ui, Arial, sans-serif; background: var(--cream); color: var(--ink); line-height: 1.5; padding-bottom: 90px; }
+    img { display: block; max-width: 100%; }
+    button { font: inherit; cursor: pointer; }
+    a { color: inherit; }
+    :focus-visible { outline: 3px solid var(--pink-deep); outline-offset: 3px; }
+
+    /* ---------- Cabecera nocturna ---------- */
+    .noche {
+      background:
+        radial-gradient(2px 2px at 12% 30%, #fff 60%, transparent 62%),
+        radial-gradient(1.5px 1.5px at 28% 72%, #fff 60%, transparent 62%),
+        radial-gradient(2px 2px at 47% 22%, #ffd9e2 60%, transparent 62%),
+        radial-gradient(1.5px 1.5px at 63% 64%, #fff 60%, transparent 62%),
+        radial-gradient(2.5px 2.5px at 78% 28%, #fff 60%, transparent 62%),
+        radial-gradient(1.5px 1.5px at 91% 70%, #ffd9e2 60%, transparent 62%),
+        radial-gradient(1.5px 1.5px at 5% 80%, #fff 60%, transparent 62%),
+        linear-gradient(135deg, var(--navy-dark), var(--navy));
+      color: #fff;
+    }
+    .cab { padding: 26px 6% 30px; display: flex; align-items: center; gap: 22px; max-width: 1240px; margin: 0 auto; }
+    .volver { position: absolute; top: 10px; left: 6%; color: #d8defa; font-weight: 700; font-size: 14px; text-decoration: none; }
+    .volver:hover { color: #fff; }
+    .noche { position: relative; }
+    .cab { padding-top: 44px !important; }
+    .luna {
+      flex: none; width: 112px; height: 112px; border-radius: 50%; background: #fff;
+      border: 4px solid var(--pink); overflow: hidden; box-shadow: 0 0 40px rgba(255,255,255,.25);
+    }
+    .luna img { width: 100%; height: 100%; object-fit: cover; }
+    .cab h1 { font-size: clamp(30px, 5vw, 46px); font-weight: 800; line-height: 1.1; }
+    .cab p { color: #d8defa; max-width: 520px; margin-top: 6px; }
+    .cab .btn-wa { margin-left: auto; }
+
+    .promo-tira { background: var(--pink); color: var(--navy-dark); text-align: center; padding: 10px 6%; font-weight: 700; font-size: 15px; }
+    .promo-tira small { font-weight: 600; opacity: .85; }
+
+    /* ---------- Botones ---------- */
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: none; border-radius: 30px; padding: 11px 22px; font-weight: 800; text-decoration: none; transition: transform .15s, background .2s; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-wa { background: var(--wa); color: #fff; }
+    .btn-wa:hover { background: var(--wa-dark); }
+    .btn-navy { background: var(--navy); color: #fff; }
+    .btn-navy:hover { background: var(--navy-dark); }
+    .btn-line { background: #fff; color: var(--navy); border: 2px solid var(--navy); }
+
+    /* ---------- Filtros ---------- */
+    .filtros { position: sticky; top: 0; z-index: 50; background: rgba(255,250,245,.96); backdrop-filter: blur(8px); border-bottom: 2px solid var(--blush); }
+    .filtros-in { max-width: 1240px; margin: 0 auto; padding: 12px 6%; display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+    .chips { display: flex; gap: 8px; flex-wrap: wrap; flex: 1 1 100%; }
+    .chip { border: 2px solid var(--blush); background: #fff; color: var(--navy); padding: 6px 14px; border-radius: 24px; font-weight: 700; font-size: 14px; }
+    .chip:hover { border-color: var(--pink); }
+    .chip[aria-pressed="true"] { background: var(--navy); border-color: var(--navy); color: #fff; }
+    .chip span { opacity: .65; font-weight: 600; margin-left: 4px; }
+    .buscar-fila { max-width: 1240px; margin: 0 auto; padding: 18px 6% 6px; }
+    .buscar { width: 100%; max-width: 420px; border: 2px solid var(--blush); background: #fff; border-radius: 24px; padding: 10px 18px; font: inherit; color: var(--ink); }
+    .buscar:focus { outline: none; border-color: var(--navy); }
+
+    /* ---------- Rejilla ---------- */
+    main { max-width: 1240px; margin: 0 auto; padding: 28px 6% 40px; }
+    .seccion { margin-bottom: 44px; }
+    .seccion h2 { font-size: 26px; font-weight: 800; color: var(--navy); margin-bottom: 4px; }
+    .seccion .cuenta { color: var(--muted); font-size: 14px; margin-bottom: 16px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 20px; }
+    .card { background: #fff; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 18px rgba(43,58,120,.09); display: flex; flex-direction: column; transition: box-shadow .2s, transform .2s; }
+    .card:hover { box-shadow: 0 12px 28px rgba(43,58,120,.16); transform: translateY(-3px); }
+    .foto { position: relative; aspect-ratio: 4 / 5; background: var(--blush); border: none; padding: 0; width: 100%; overflow: hidden; }
+    .foto img { width: 100%; height: 100%; object-fit: cover; }
+    .foto img { position: relative; }
+    .foto img.contener { object-fit: contain; }
+    .foto .bgb { position: absolute; left: -10%; top: -10%; width: 120%; height: 120%; object-fit: cover; filter: blur(14px); opacity: .55; }
+    .ref { position: absolute; top: 10px; left: 10px; background: var(--navy); color: #fff; font-weight: 800; font-size: 12px; padding: 3px 10px; border-radius: 12px; }
+    .info { padding: 12px 14px 14px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+    .info h3 { font-size: 16px; font-weight: 800; color: var(--navy); line-height: 1.25; }
+    .precio { font-weight: 800; color: var(--pink-deep); }
+    .agregar { margin-top: auto; border: 2px solid var(--navy); background: #fff; color: var(--navy); border-radius: 22px; padding: 7px 12px; font-weight: 800; font-size: 14px; transition: background .15s, color .15s; }
+    .agregar:hover { background: var(--blush); }
+    .agregar[aria-pressed="true"] { background: var(--navy); color: #fff; }
+    .vacio { text-align: center; padding: 60px 0; color: var(--muted); }
+
+    /* ---------- Barra de pedido ---------- */
+    .pedido-barra { position: fixed; left: 0; right: 0; bottom: 0; z-index: 80; background: var(--navy-dark); color: #fff; padding: 12px 6%; display: none; align-items: center; gap: 14px; flex-wrap: wrap; box-shadow: 0 -8px 24px rgba(0,0,0,.2); }
+    .pedido-barra.on { display: flex; }
+    .pedido-barra .txt { flex: 1 1 240px; font-weight: 700; }
+    .pedido-barra .txt small { display: block; font-weight: 600; color: var(--pink); }
+    .pedido-barra .txt small.ok { color: #9be9ae; }
+
+    /* ---------- Panel de pedido y visor ---------- */
+    .capa { position: fixed; inset: 0; background: rgba(20,26,60,.7); z-index: 200; display: none; align-items: center; justify-content: center; padding: 16px; }
+    .capa.on { display: flex; }
+    .panel { background: #fff; border-radius: 24px; width: min(480px, 100%); max-height: 86vh; display: flex; flex-direction: column; overflow: hidden; }
+    .panel header { padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--blush); }
+    .panel h2 { font-size: 20px; color: var(--navy); }
+    .cerrar { background: var(--blush); border: none; width: 36px; height: 36px; border-radius: 50%; font-size: 20px; color: var(--navy); line-height: 1; }
+    .lista { overflow: auto; padding: 8px 20px; }
+    .fila { display: flex; gap: 12px; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--blush); }
+    .fila img { width: 54px; height: 66px; object-fit: cover; border-radius: 10px; background: var(--blush); }
+    .fila div { flex: 1; font-weight: 700; color: var(--navy); font-size: 15px; }
+    .fila div small { display: block; color: var(--muted); font-weight: 600; }
+    .fila button { background: none; border: none; color: var(--pink-deep); font-weight: 800; }
+    .panel footer { padding: 16px 20px; display: flex; flex-direction: column; gap: 8px; }
+
+    .visor { background: #fff; border-radius: 24px; width: min(920px, 100%); max-height: 92vh; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); overflow: hidden; position: relative; }
+    .visor .grande { background: var(--blush); display: flex; align-items: center; justify-content: center; min-height: 0; }
+    .visor .grande img { max-height: 92vh; width: 100%; height: 100%; object-fit: contain; }
+    .visor .datos { padding: 28px 26px; display: flex; flex-direction: column; gap: 10px; justify-content: center; }
+    .visor .datos .cat { color: var(--muted); font-weight: 700; font-size: 14px; }
+    .visor .datos h2 { font-size: 28px; color: var(--navy); line-height: 1.15; }
+    .visor .nav { display: flex; gap: 8px; margin-top: 10px; }
+    .visor .cerrar { position: absolute; top: 12px; right: 12px; }
+
+    footer.pie { background: var(--navy-dark); color: #d8defa; text-align: center; padding: 40px 6% 110px; }
+    footer.pie h2 { color: #fff; font-size: 26px; margin-bottom: 8px; }
+    footer.pie .datos-pie { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
+    footer.pie .datos-pie a { background: rgba(255,255,255,.12); padding: 8px 18px; border-radius: 24px; text-decoration: none; font-weight: 700; color: #fff; }
+
+    @media (max-width: 900px) {
+      .filtros-in { padding: 10px 5%; }
+      .chips { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+      .chips::-webkit-scrollbar { display: none; }
+      .chip { white-space: nowrap; flex: none; }
+    }
+    @media (max-width: 720px) {
+      .buscar-fila { padding: 14px 5% 4px; }
+      .promo-tira { font-size: 14px; }
+      .cab { flex-wrap: wrap; padding: 20px 5% 24px; gap: 16px; }
+      .luna { width: 84px; height: 84px; }
+      .cab .btn-wa { margin-left: 0; width: 100%; }
+      .grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .info h3 { font-size: 14px; }
+      .visor { grid-template-columns: 1fr; overflow: auto; }
+      .visor .grande img { max-height: 52vh; }
+      .visor .datos { padding: 18px 20px 22px; }
+    }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+  </style>
+</head>
+
+<body>
+
+  <div class="noche">
+    <div class="cab">
+      <a class="volver" href="index.html">← Volver a la tienda</a>
+      <div class="luna"><img src="img/logo.jpg" alt="Jirafita Dreams"></div>
+      <div>
+        <h1>Catálogo de pijamas</h1>
+        <p>Elige tus favoritas, agrégalas a tu pedido y envíanoslo por WhatsApp. Te confirmamos tallas y envío.</p>
+      </div>
+      <a class="btn btn-wa" id="wa-cab" target="_blank" rel="noopener">Escríbenos por WhatsApp</a>
+    </div>
+  </div>
+
+  <div class="promo-tira" id="promo-tira"></div>
+
+  <div class="buscar-fila">
+    <input class="buscar" id="buscar" type="search" placeholder="Buscar: osito, corazones, Stitch, JD-012…" aria-label="Buscar pijamas">
+  </div>
+
+  <div class="filtros">
+    <div class="filtros-in">
+      <div class="chips" id="chips" role="group" aria-label="Categorías"></div>
+    </div>
+  </div>
+
+  <main id="catalogo" aria-live="polite"></main>
+
+  <footer class="pie">
+    <h2>¿Lista para soñar bonito?</h2>
+    <p>Cómodas, lindas, para ti.</p>
+    <div class="datos-pie">
+      <a id="wa-pie" target="_blank" rel="noopener"></a>
+      <a href="index.html">🏠 Volver a la tienda</a>
+      <a id="mail-pie"></a>
+      <a id="ig-pie" target="_blank" rel="noopener"></a>
+    </div>
+  </footer>
+
+  <div class="pedido-barra" id="barra">
+    <div class="txt"><span id="barra-n"></span><small id="barra-promo"></small></div>
+    <button class="btn btn-line" id="ver-pedido">Ver pedido</button>
+    <a class="btn btn-wa" id="enviar-barra" target="_blank" rel="noopener">Enviar por WhatsApp</a>
+  </div>
+
+  <div class="capa" id="capa-pedido" role="dialog" aria-modal="true" aria-label="Tu pedido">
+    <div class="panel">
+      <header><h2>Tu pedido</h2><button class="cerrar" data-cerrar aria-label="Cerrar">×</button></header>
+      <div class="lista" id="lista-pedido"></div>
+      <footer>
+        <a class="btn btn-wa" id="enviar-panel" target="_blank" rel="noopener">Enviar pedido por WhatsApp</a>
+        <button class="btn btn-line" id="vaciar">Vaciar pedido</button>
+      </footer>
+    </div>
+  </div>
+
+  <div class="capa" id="capa-visor" role="dialog" aria-modal="true" aria-label="Detalle de la pijama">
+    <div class="visor">
+      <button class="cerrar" data-cerrar aria-label="Cerrar">×</button>
+      <div class="grande"><img id="v-img" alt=""></div>
+      <div class="datos">
+        <div class="cat" id="v-cat"></div>
+        <h2 id="v-nombre"></h2>
+        <div class="precio" id="v-precio"></div>
+        <div class="cat" id="v-ref"></div>
+        <button class="btn btn-navy" id="v-agregar"></button>
+        <a class="btn btn-wa" id="v-wa" target="_blank" rel="noopener">Preguntar por esta pijama</a>
+        <div class="nav">
+          <button class="btn btn-line" id="v-prev" aria-label="Anterior">‹ Anterior</button>
+          <button class="btn btn-line" id="v-next" aria-label="Siguiente">Siguiente ›</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* ===== DATOS (editables) ===== */
+    var CONFIG = {"wa": "573209307427", "waTxt": "320 930 7427", "email": "jirafitadreams@gmail.com", "ig": "@jirafita_dreams09", "promo": {"nombre": "Noches de ensueño", "titulo": "Lleva 2 pijamas", "descuento": "10%", "detalle": "de descuento", "vigencia": "Del 1 al 30 de noviembre de 2026", "condicion": "Aplica al comprar 2 o más pijamas. Sujeto a disponibilidad."}, "precios": {"strapless": 25000, "tirantes": 25000, "enterizos": 25000, "love": 35000, "ella": 35000, "el": 35000, "pantalon": 40000, "triangular": 40000}};
+    var DATA = {"cats": [{"slug": "enterizos", "titulo": "Enterizos y camisones", "n": 10, "corto": "Enterizos"}, {"slug": "pantalon", "titulo": "Conjuntos con pantalón largo", "n": 10, "corto": "Pantalón largo"}, {"slug": "love", "titulo": "Colección Love", "n": 15, "corto": "Colección Love"}, {"slug": "triangular", "titulo": "Conjuntos de tres piezas", "n": 13, "corto": "Tres piezas"}, {"slug": "tirantes", "titulo": "Top de tirantes y short", "n": 9, "corto": "Tirantes y short"}, {"slug": "strapless", "titulo": "Top strapless y short", "n": 18, "corto": "Strapless y short"}, {"slug": "ella", "titulo": "Manga corta y larga para ella", "n": 22, "corto": "Para ella"}, {"slug": "el", "titulo": "Pijamas para él", "n": 3, "corto": "Para él"}], "productos": [{"ref": "JD-001", "nombre": "Enterizo Pandas", "cat": "enterizos", "img": "img/JD-001.jpg", "w": 654, "h": 900}, {"ref": "JD-002", "nombre": "Enterizo Vaquita Muu", "cat": "enterizos", "img": "img/JD-002.jpg", "w": 675, "h": 900}, {"ref": "JD-003", "nombre": "Enterizo Winnie Pooh", "cat": "enterizos", "img": "img/JD-003.jpg", "w": 675, "h": 900}, {"ref": "JD-004", "nombre": "Enterizo Kitty Spider", "cat": "enterizos", "img": "img/JD-004.jpg", "w": 675, "h": 900}, {"ref": "JD-005", "nombre": "Enterizo Love Pigs", "cat": "enterizos", "img": "img/JD-005.jpg", "w": 675, "h": 900}, {"ref": "JD-006", "nombre": "Enterizo Aguacates", "cat": "enterizos", "img": "img/JD-006.jpg", "w": 675, "h": 900}, {"ref": "JD-007", "nombre": "Enterizo Stitch Corazones", "cat": "enterizos", "img": "img/JD-007.jpg", "w": 675, "h": 900}, {"ref": "JD-008", "nombre": "Enterizo Cariñositos", "cat": "enterizos", "img": "img/JD-008.jpg", "w": 675, "h": 900}, {"ref": "JD-009", "nombre": "Enterizo Ositos Rosa", "cat": "enterizos", "img": "img/JD-009.jpg", "w": 675, "h": 900}, {"ref": "JD-010", "nombre": "Camisón Flores Rosa", "cat": "enterizos", "img": "img/JD-010.jpg", "w": 608, "h": 900}, {"ref": "JD-011", "nombre": "Ositos Rosa con Lazos", "cat": "pantalon", "img": "img/JD-011.jpg", "w": 592, "h": 900}, {"ref": "JD-012", "nombre": "Winnie Pooh", "cat": "pantalon", "img": "img/JD-012.jpg", "w": 675, "h": 900}, {"ref": "JD-013", "nombre": "Huevitos Fritos", "cat": "pantalon", "img": "img/JD-013.jpg", "w": 675, "h": 900}, {"ref": "JD-014", "nombre": "Hello Kitty Leopardo", "cat": "pantalon", "img": "img/JD-014.jpg", "w": 651, "h": 900}, {"ref": "JD-015", "nombre": "Marie Leopardo Lila", "cat": "pantalon", "img": "img/JD-015.jpg", "w": 587, "h": 900}, {"ref": "JD-016", "nombre": "Vaquita Print", "cat": "pantalon", "img": "img/JD-016.jpg", "w": 599, "h": 900}, {"ref": "JD-017", "nombre": "Aguacates Verde", "cat": "pantalon", "img": "img/JD-017.jpg", "w": 900, "h": 900}, {"ref": "JD-018", "nombre": "Celeste Corazones", "cat": "pantalon", "img": "img/JD-018.jpg", "w": 543, "h": 900}, {"ref": "JD-019", "nombre": "Lila Cuadros", "cat": "pantalon", "img": "img/JD-019.jpg", "w": 533, "h": 900}, {"ref": "JD-020", "nombre": "Pandas Camiseta y Pantalón", "cat": "pantalon", "img": "img/JD-020.jpg", "w": 555, "h": 900}, {"ref": "JD-021", "nombre": "Winnie Pooh y Amigos", "cat": "love", "img": "img/JD-021.jpg", "w": 558, "h": 900}, {"ref": "JD-022", "nombre": "Corazones Vive Bonito Pantalón", "cat": "love", "img": "img/JD-022.jpg", "w": 557, "h": 900}, {"ref": "JD-023", "nombre": "Ositos Beige Pantalón", "cat": "love", "img": "img/JD-023.jpg", "w": 541, "h": 900}, {"ref": "JD-024", "nombre": "Aguacates Pantalón", "cat": "love", "img": "img/JD-024.jpg", "w": 570, "h": 900}, {"ref": "JD-025", "nombre": "Stitch Flores Pantalón", "cat": "love", "img": "img/JD-025.jpg", "w": 584, "h": 900}, {"ref": "JD-026", "nombre": "Hello Kitty Rojo Pantalón", "cat": "love", "img": "img/JD-026.jpg", "w": 592, "h": 900}, {"ref": "JD-027", "nombre": "Ositos Crema", "cat": "love", "img": "img/JD-027.jpg", "w": 675, "h": 900}, {"ref": "JD-028", "nombre": "Ositos Lila con Moños", "cat": "love", "img": "img/JD-028.jpg", "w": 675, "h": 900}, {"ref": "JD-029", "nombre": "Corazones Rojos Fucsia", "cat": "love", "img": "img/JD-029.jpg", "w": 630, "h": 900}, {"ref": "JD-030", "nombre": "Corazones Negro", "cat": "love", "img": "img/JD-030.jpg", "w": 675, "h": 900}, {"ref": "JD-031", "nombre": "Corazones Sellos", "cat": "love", "img": "img/JD-031.jpg", "w": 675, "h": 900}, {"ref": "JD-032", "nombre": "Moños Azules Crema", "cat": "love", "img": "img/JD-032.jpg", "w": 675, "h": 900}, {"ref": "JD-033", "nombre": "Ositos Bear Negro", "cat": "love", "img": "img/JD-033.jpg", "w": 675, "h": 900}, {"ref": "JD-034", "nombre": "Moños Cuadros Azul", "cat": "love", "img": "img/JD-034.jpg", "w": 675, "h": 900}, {"ref": "JD-035", "nombre": "Mini Corazones Negro", "cat": "love", "img": "img/JD-035.jpg", "w": 675, "h": 900}, {"ref": "JD-036", "nombre": "Stitch en las Nubes", "cat": "triangular", "img": "img/JD-036.jpg", "w": 675, "h": 900}, {"ref": "JD-037", "nombre": "Lotso Rosa", "cat": "triangular", "img": "img/JD-037.jpg", "w": 715, "h": 900}, {"ref": "JD-038", "nombre": "Hello Kitty Lila", "cat": "triangular", "img": "img/JD-038.jpg", "w": 900, "h": 900}, {"ref": "JD-039", "nombre": "Tom y Jerry", "cat": "triangular", "img": "img/JD-039.jpg", "w": 900, "h": 900}, {"ref": "JD-040", "nombre": "Stitch Naranja", "cat": "triangular", "img": "img/JD-040.jpg", "w": 900, "h": 900}, {"ref": "JD-041", "nombre": "Snoopy Colores", "cat": "triangular", "img": "img/JD-041.jpg", "w": 684, "h": 900}, {"ref": "JD-042", "nombre": "Aguacate Beautiful", "cat": "triangular", "img": "img/JD-042.jpg", "w": 855, "h": 900}, {"ref": "JD-043", "nombre": "Marie Rosa", "cat": "triangular", "img": "img/JD-043.jpg", "w": 699, "h": 900}, {"ref": "JD-044", "nombre": "Hello Kitty Fucsia", "cat": "triangular", "img": "img/JD-044.jpg", "w": 732, "h": 900}, {"ref": "JD-045", "nombre": "Cerditos Rosa", "cat": "triangular", "img": "img/JD-045.jpg", "w": 677, "h": 900}, {"ref": "JD-046", "nombre": "Aguacate Corazón", "cat": "triangular", "img": "img/JD-046.jpg", "w": 710, "h": 900}, {"ref": "JD-047", "nombre": "Chicas Superpoderosas", "cat": "triangular", "img": "img/JD-047.jpg", "w": 568, "h": 900}, {"ref": "JD-048", "nombre": "Stitch Corazones Azul", "cat": "triangular", "img": "img/JD-048.jpg", "w": 900, "h": 900}, {"ref": "JD-049", "nombre": "Garfield Naranja", "cat": "tirantes", "img": "img/JD-049.jpg", "w": 675, "h": 900}, {"ref": "JD-050", "nombre": "Lotso Pantalón Lila", "cat": "tirantes", "img": "img/JD-050.jpg", "w": 491, "h": 900}, {"ref": "JD-051", "nombre": "Hello Kitty Pantalón Fucsia", "cat": "tirantes", "img": "img/JD-051.jpg", "w": 492, "h": 900}, {"ref": "JD-052", "nombre": "Villanas Pantalón Plus", "cat": "tirantes", "img": "img/JD-052.jpg", "w": 457, "h": 900}, {"ref": "JD-053", "nombre": "Lotso Short Rosa", "cat": "tirantes", "img": "img/JD-053.jpg", "w": 585, "h": 900}, {"ref": "JD-054", "nombre": "Marie Short", "cat": "tirantes", "img": "img/JD-054.jpg", "w": 582, "h": 900}, {"ref": "JD-055", "nombre": "Lotso Short Fucsia", "cat": "tirantes", "img": "img/JD-055.jpg", "w": 561, "h": 900}, {"ref": "JD-056", "nombre": "Girasoles", "cat": "tirantes", "img": "img/JD-056.jpg", "w": 601, "h": 900}, {"ref": "JD-057", "nombre": "Cerdito Dormilón", "cat": "tirantes", "img": "img/JD-057.jpg", "w": 569, "h": 900}, {"ref": "JD-058", "nombre": "Osito Café con Lazos", "cat": "strapless", "img": "img/JD-058.jpg", "w": 675, "h": 900}, {"ref": "JD-059", "nombre": "Ositos Rosa Corazones", "cat": "strapless", "img": "img/JD-059.jpg", "w": 748, "h": 900}, {"ref": "JD-060", "nombre": "Aguacate Corazón Negro", "cat": "strapless", "img": "img/JD-060.jpg", "w": 675, "h": 900}, {"ref": "JD-061", "nombre": "Cerezas y Moños", "cat": "strapless", "img": "img/JD-061.jpg", "w": 803, "h": 900}, {"ref": "JD-062", "nombre": "Corazones Rojo", "cat": "strapless", "img": "img/JD-062.jpg", "w": 737, "h": 900}, {"ref": "JD-063", "nombre": "Wall-E Rosa", "cat": "strapless", "img": "img/JD-063.jpg", "w": 675, "h": 900}, {"ref": "JD-064", "nombre": "Cariñositos", "cat": "strapless", "img": "img/JD-064.jpg", "w": 747, "h": 900}, {"ref": "JD-065", "nombre": "Hello Kitty Rosa", "cat": "strapless", "img": "img/JD-065.jpg", "w": 675, "h": 900}, {"ref": "JD-066", "nombre": "Kitty Spider Rojo", "cat": "strapless", "img": "img/JD-066.jpg", "w": 675, "h": 900}, {"ref": "JD-067", "nombre": "Vive Bonito Rosa", "cat": "strapless", "img": "img/JD-067.jpg", "w": 675, "h": 900}, {"ref": "JD-068", "nombre": "Lotso Rosa", "cat": "strapless", "img": "img/JD-068.jpg", "w": 740, "h": 900}, {"ref": "JD-069", "nombre": "Winnie Pooh Cuadros", "cat": "strapless", "img": "img/JD-069.jpg", "w": 798, "h": 900}, {"ref": "JD-070", "nombre": "Snoopy Rosa", "cat": "strapless", "img": "img/JD-070.jpg", "w": 675, "h": 900}, {"ref": "JD-071", "nombre": "Stitch y Pollito", "cat": "strapless", "img": "img/JD-071.jpg", "w": 753, "h": 900}, {"ref": "JD-072", "nombre": "Cerditos Rosa", "cat": "strapless", "img": "img/JD-072.jpg", "w": 675, "h": 900}, {"ref": "JD-073", "nombre": "Cerditos Fucsia", "cat": "strapless", "img": "img/JD-073.jpg", "w": 778, "h": 900}, {"ref": "JD-074", "nombre": "Hello Kitty Rayas Rojas", "cat": "strapless", "img": "img/JD-074.jpg", "w": 675, "h": 900}, {"ref": "JD-075", "nombre": "Winnie Pooh Amarillo", "cat": "strapless", "img": "img/JD-075.jpg", "w": 675, "h": 900}, {"ref": "JD-076", "nombre": "Pikapi Amarilla Manga Larga", "cat": "ella", "img": "img/JD-076.jpg", "w": 675, "h": 900}, {"ref": "JD-077", "nombre": "Dumbo Gris Manga Larga", "cat": "ella", "img": "img/JD-077.jpg", "w": 675, "h": 900}, {"ref": "JD-078", "nombre": "Hello Kitty Rosa Manga Larga", "cat": "ella", "img": "img/JD-078.jpg", "w": 900, "h": 675}, {"ref": "JD-079", "nombre": "Minnie Rosa Manga Larga", "cat": "ella", "img": "img/JD-079.jpg", "w": 675, "h": 900}, {"ref": "JD-080", "nombre": "Osito Gris Manga Larga", "cat": "ella", "img": "img/JD-080.jpg", "w": 668, "h": 900}, {"ref": "JD-081", "nombre": "Stitch Pareja", "cat": "ella", "img": "img/JD-081.jpg", "w": 655, "h": 900}, {"ref": "JD-082", "nombre": "Minnie Camisera Rosa", "cat": "ella", "img": "img/JD-082.jpg", "w": 900, "h": 900}, {"ref": "JD-083", "nombre": "Stitch Rosa", "cat": "ella", "img": "img/JD-083.jpg", "w": 900, "h": 728}, {"ref": "JD-084", "nombre": "Winnie Pooh Amarillo Manga Corta", "cat": "ella", "img": "img/JD-084.jpg", "w": 675, "h": 900}, {"ref": "JD-085", "nombre": "Marie Rosa Manga Corta", "cat": "ella", "img": "img/JD-085.jpg", "w": 900, "h": 675}, {"ref": "JD-086", "nombre": "Dino Cuadros Verde", "cat": "ella", "img": "img/JD-086.jpg", "w": 900, "h": 779}, {"ref": "JD-087", "nombre": "Snoopy Celeste", "cat": "ella", "img": "img/JD-087.jpg", "w": 833, "h": 900}, {"ref": "JD-088", "nombre": "Osito Rosa", "cat": "ella", "img": "img/JD-088.jpg", "w": 900, "h": 689}, {"ref": "JD-089", "nombre": "Hello Kitty y Stitch", "cat": "ella", "img": "img/JD-089.jpg", "w": 675, "h": 900}, {"ref": "JD-090", "nombre": "Hojas Talla Única", "cat": "ella", "img": "img/JD-090.jpg", "w": 603, "h": 900}, {"ref": "JD-091", "nombre": "Stitch Cuadros Azul", "cat": "ella", "img": "img/JD-091.jpg", "w": 506, "h": 900}, {"ref": "JD-092", "nombre": "Kuromi Rosa", "cat": "ella", "img": "img/JD-092.jpg", "w": 900, "h": 745}, {"ref": "JD-093", "nombre": "Ositos Durazno", "cat": "ella", "img": "img/JD-093.jpg", "w": 900, "h": 764}, {"ref": "JD-094", "nombre": "Stitch Azul", "cat": "ella", "img": "img/JD-094.jpg", "w": 700, "h": 563}, {"ref": "JD-095", "nombre": "Gatitos Negros", "cat": "ella", "img": "img/JD-095.jpg", "w": 900, "h": 759}, {"ref": "JD-096", "nombre": "Stitch y Ángel Lila", "cat": "ella", "img": "img/JD-096.jpg", "w": 434, "h": 343}, {"ref": "JD-097", "nombre": "Stitch Rosa Ositos", "cat": "ella", "img": "img/JD-097.jpg", "w": 900, "h": 662}, {"ref": "JD-098", "nombre": "Dragón Negro", "cat": "el", "img": "img/JD-098.jpg", "w": 900, "h": 900}, {"ref": "JD-099", "nombre": "Mickey Naranja", "cat": "el", "img": "img/JD-099.jpg", "w": 410, "h": 900}, {"ref": "JD-100", "nombre": "Monsters Inc Azul", "cat": "el", "img": "img/JD-100.jpg", "w": 446, "h": 900}]};
+
+    var WA = 'https://wa.me/' + CONFIG.wa + '?text=';
+    var cats = {}; DATA.cats.forEach(function (c) { cats[c.slug] = c; });
+    var prods = DATA.productos;
+    var byRef = {}; prods.forEach(function (p) { byRef[p.ref] = p; });
+
+    var seleccion = []; var filtro = 'todas'; var texto = ''; var visorLista = []; var visorPos = 0;
+
+    try { seleccion = JSON.parse(localStorage.getItem('jd_pedido') || '[]').filter(function (r) { return byRef[r]; }); } catch (e) { seleccion = []; }
+    function guardar() { try { localStorage.setItem('jd_pedido', JSON.stringify(seleccion)); } catch (e) {} }
+
+    function precioDe(p) { var v = CONFIG.precios[p.cat]; return v ? '$' + v.toLocaleString('es-CO') + ' COP' : ''; }
+    function norm(s) { return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); }
+    function waLink(msg) { return WA + encodeURIComponent(msg); }
+
+    /* ---- cabecera, promo, pie ---- */
+    document.getElementById('wa-cab').href = waLink('Hola Jirafita Dreams, vi su catálogo y quiero más información');
+    document.getElementById('promo-tira').innerHTML = '🌙 <strong>' + CONFIG.promo.nombre + ':</strong> ' + CONFIG.promo.titulo.toLowerCase() + ' y recibe ' + CONFIG.promo.descuento + ' ' + CONFIG.promo.detalle + ' · <small>' + CONFIG.promo.vigencia + '</small>';
+    var w = document.getElementById('wa-pie'); w.href = waLink('Hola Jirafita Dreams, quiero más información'); w.textContent = '📱 ' + CONFIG.waTxt;
+    var m = document.getElementById('mail-pie'); m.href = 'mailto:' + CONFIG.email; m.textContent = '✉️ ' + CONFIG.email;
+    var ig = document.getElementById('ig-pie'); ig.href = 'https://www.instagram.com/' + CONFIG.ig.replace('@', ''); ig.textContent = '📸 ' + CONFIG.ig;
+
+    /* ---- chips ---- */
+    var chipsEl = document.getElementById('chips');
+    function crearChips() {
+      var html = '<button class="chip" data-f="todas" aria-pressed="true">Todas<span>' + prods.length + '</span></button>';
+      DATA.cats.forEach(function (c) { html += '<button class="chip" data-f="' + c.slug + '" aria-pressed="false">' + (c.corto || c.titulo) + '<span>' + c.n + '</span></button>'; });
+      chipsEl.innerHTML = html;
+    }
+    chipsEl.addEventListener('click', function (e) {
+      var b = e.target.closest('.chip'); if (!b) return;
+      filtro = b.getAttribute('data-f');
+      chipsEl.querySelectorAll('.chip').forEach(function (c) { c.setAttribute('aria-pressed', c === b ? 'true' : 'false'); });
+      pintar(); window.scrollTo({ top: document.querySelector('.filtros').offsetTop - 4, behavior: 'smooth' });
+    });
+    document.getElementById('buscar').addEventListener('input', function (e) { texto = norm(e.target.value.trim()); pintar(); });
+
+    /* ---- catálogo ---- */
+    function visibles() {
+      return prods.filter(function (p) {
+        if (filtro !== 'todas' && p.cat !== filtro) return false;
+        if (texto && norm(p.nombre + ' ' + p.ref + ' ' + cats[p.cat].titulo).indexOf(texto) === -1) return false;
+        return true;
+      });
+    }
+    function tarjeta(p) {
+      var r = p.w / p.h; var ajuste = (r >= 0.68 && r <= 1.05) ? '' : ' class="contener"';
+      var on = seleccion.indexOf(p.ref) > -1; var pr = precioDe(p);
+      return '<article class="card">' +
+        '<button class="foto" data-abrir="' + p.ref + '" aria-label="Ver ' + p.nombre + '">' + (ajuste ? '<img class="bgb" src="' + p.img + '" alt="" aria-hidden="true" loading="lazy">' : '') + '<img' + ajuste + ' src="' + p.img + '" alt="Pijama ' + p.nombre + '" width="' + p.w + '" height="' + p.h + '" loading="lazy" decoding="async"><span class="ref">' + p.ref + '</span></button>' +
+        '<div class="info"><h3>' + p.nombre + '</h3>' + (pr ? '<div class="precio">' + pr + '</div>' : '') +
+        '<button class="agregar" data-agregar="' + p.ref + '" aria-pressed="' + on + '">' + (on ? 'Agregada ✓' : 'Agregar al pedido') + '</button></div></article>';
+    }
+    function pintar() {
+      var lista = visibles(); var html = '';
+      if (!lista.length) { html = '<div class="vacio"><h2>No encontramos pijamas con esa búsqueda</h2><p>Prueba con otra palabra, como "osito", "corazones" o "Stitch".</p></div>'; }
+      else {
+        DATA.cats.forEach(function (c) {
+          var g = lista.filter(function (p) { return p.cat === c.slug; }); if (!g.length) return;
+          html += '<section class="seccion" id="c-' + c.slug + '"><h2>' + c.titulo + '</h2><div class="cuenta">' + g.length + (g.length === 1 ? ' diseño' : ' diseños') + '</div><div class="grid">' + g.map(tarjeta).join('') + '</div></section>';
+        });
+      }
+      document.getElementById('catalogo').innerHTML = html;
+      visorLista = lista;
+    }
+
+    /* ---- pedido ---- */
+    function mensaje() {
+      var l = seleccion.map(function (r) { return '• ' + r + ' ' + byRef[r].nombre; }).join('\n');
+      var promo = seleccion.length >= 2 ? '\n\nQuiero aplicar la promo ' + CONFIG.promo.nombre + ' (' + CONFIG.promo.descuento + ' de descuento).' : '';
+      return 'Hola Jirafita Dreams, quiero pedir estas pijamas:\n' + l + promo + '\n\n¿Qué tallas tienen disponibles?';
+    }
+    function actualizarBarra() {
+      var n = seleccion.length; var barra = document.getElementById('barra');
+      barra.classList.toggle('on', n > 0);
+      document.getElementById('barra-n').textContent = n + (n === 1 ? ' pijama en tu pedido' : ' pijamas en tu pedido');
+      var s = document.getElementById('barra-promo');
+      if (n >= 2) { s.textContent = '¡Promo activa! ' + CONFIG.promo.descuento + ' ' + CONFIG.promo.detalle; s.className = 'ok'; }
+      else { s.textContent = 'Agrega 1 más y recibe ' + CONFIG.promo.descuento + ' ' + CONFIG.promo.detalle; s.className = ''; }
+      var href = n ? waLink(mensaje()) : '#';
+      document.getElementById('enviar-barra').href = href; document.getElementById('enviar-panel').href = href;
+    }
+    function alternar(ref) {
+      var i = seleccion.indexOf(ref); if (i > -1) seleccion.splice(i, 1); else seleccion.push(ref);
+      guardar(); actualizarBarra(); refrescarBotones(); if (document.getElementById('capa-pedido').classList.contains('on')) pintarPedido();
+    }
+    function refrescarBotones() {
+      document.querySelectorAll('[data-agregar]').forEach(function (b) {
+        var on = seleccion.indexOf(b.getAttribute('data-agregar')) > -1;
+        b.setAttribute('aria-pressed', on); b.textContent = on ? 'Agregada ✓' : 'Agregar al pedido';
+      });
+      var vr = document.getElementById('v-agregar').getAttribute('data-ref');
+      if (vr) document.getElementById('v-agregar').textContent = seleccion.indexOf(vr) > -1 ? 'Quitar de mi pedido' : 'Agregar al pedido';
+    }
+    function pintarPedido() {
+      var el = document.getElementById('lista-pedido');
+      if (!seleccion.length) { el.innerHTML = '<p style="padding:24px 0;color:#75758f">Aún no has agregado pijamas.</p>'; return; }
+      el.innerHTML = seleccion.map(function (r) { var p = byRef[r]; return '<div class="fila"><img src="' + p.img + '" alt=""><div>' + p.nombre + '<small>' + p.ref + '</small></div><button data-quitar="' + r + '">Quitar</button></div>'; }).join('');
+    }
+
+    /* ---- visor ---- */
+    function abrirVisor(ref) {
+      visorPos = Math.max(0, visorLista.map(function (p) { return p.ref; }).indexOf(ref)); mostrarVisor();
+      document.getElementById('capa-visor').classList.add('on');
+    }
+    function mostrarVisor() {
+      var p = visorLista[visorPos]; if (!p) return;
+      var img = document.getElementById('v-img'); img.src = p.img; img.alt = 'Pijama ' + p.nombre;
+      document.getElementById('v-cat').textContent = cats[p.cat].titulo;
+      document.getElementById('v-nombre').textContent = p.nombre;
+      document.getElementById('v-ref').textContent = 'Referencia ' + p.ref;
+      document.getElementById('v-precio').textContent = precioDe(p);
+      var a = document.getElementById('v-agregar'); a.setAttribute('data-ref', p.ref);
+      a.textContent = seleccion.indexOf(p.ref) > -1 ? 'Quitar de mi pedido' : 'Agregar al pedido';
+      document.getElementById('v-wa').href = waLink('Hola Jirafita Dreams, me interesa la pijama ' + p.ref + ' ' + p.nombre + '. ¿Tienen tallas disponibles?');
+    }
+    function moverVisor(d) { visorPos = (visorPos + d + visorLista.length) % visorLista.length; mostrarVisor(); }
+
+    document.addEventListener('click', function (e) {
+      var t;
+      if ((t = e.target.closest('[data-abrir]'))) return abrirVisor(t.getAttribute('data-abrir'));
+      if ((t = e.target.closest('[data-agregar]'))) return alternar(t.getAttribute('data-agregar'));
+      if ((t = e.target.closest('[data-quitar]'))) return alternar(t.getAttribute('data-quitar'));
+      if (e.target.closest('[data-cerrar]') || e.target.classList.contains('capa')) return document.querySelectorAll('.capa').forEach(function (c) { c.classList.remove('on'); });
+      if (e.target.id === 'v-agregar') return alternar(e.target.getAttribute('data-ref'));
+      if (e.target.id === 'v-prev') return moverVisor(-1);
+      if (e.target.id === 'v-next') return moverVisor(1);
+      if (e.target.id === 'ver-pedido') { pintarPedido(); return document.getElementById('capa-pedido').classList.add('on'); }
+      if (e.target.id === 'vaciar') { seleccion = []; guardar(); actualizarBarra(); refrescarBotones(); pintarPedido(); }
+    });
+    document.addEventListener('keydown', function (e) {
+      var abierto = document.getElementById('capa-visor').classList.contains('on');
+      if (e.key === 'Escape') document.querySelectorAll('.capa').forEach(function (c) { c.classList.remove('on'); });
+      if (abierto && e.key === 'ArrowLeft') moverVisor(-1);
+      if (abierto && e.key === 'ArrowRight') moverVisor(1);
+    });
+
+    crearChips(); pintar(); actualizarBarra();
+  </script>
+</body>
+</html>

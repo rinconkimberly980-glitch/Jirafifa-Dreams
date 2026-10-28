@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jirafita Dreams | Pijamas cómodas, lindas, para ti</title>
+  <meta name="description" content="Jirafita Dreams: pijamas cómodas y lindas para soñar. Pídelas por WhatsApp.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #2b3a78;
+      --navy-dark: #1f2a5a;
+      --pink: #f4a7b9;
+      --pink-soft: #fde4ea;
+      --pink-bg: #fff5f7;
+      --cream: #fffaf5;
+      --text: #3a3a52;
+      --whatsapp: #25a244;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Nunito', Arial, sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+
+    h1, h2, h3 { font-family: 'Dancing Script', cursive; color: var(--navy); line-height: 1.15; }
+
+    section { scroll-margin-top: 80px; }
+
+    /* ---------- HEADER ---------- */
+    header {
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(8px);
+      padding: 10px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 2px solid var(--pink-soft);
+    }
+
+    .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo img { width: 62px; height: 62px; object-fit: contain; }
+    .logo span { font-family: 'Dancing Script', cursive; font-size: 28px; font-weight: 700; color: var(--navy); }
+
+    nav ul { display: flex; list-style: none; gap: 26px; align-items: center; }
+    nav a { text-decoration: none; color: var(--navy); font-weight: 700; transition: color .2s; }
+    nav a:hover { color: #d9708a; }
+    nav a.nav-cta {
+      background: var(--navy); color: #fff; padding: 9px 20px; border-radius: 30px;
+    }
+    nav a.nav-cta:hover { background: var(--navy-dark); color: #fff; }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      padding: 70px 8% 80px;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 50px;
+      align-items: center;
+      background:
+        radial-gradient(circle at 10% 20%, var(--pink-soft) 0, transparent 40%),
+        radial-gradient(circle at 90% 80%, #e6ebff 0, transparent 40%),
+        var(--pink-bg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero .tag {
+      display: inline-block;
+      background: #fff;
+      color: var(--navy);
+      border: 2px solid var(--pink);
+      padding: 6px 18px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 { font-size: clamp(46px, 7vw, 78px); margin-bottom: 8px; }
+    .hero h2 { font-size: clamp(26px, 3.5vw, 36px); color: #d9708a; margin-bottom: 18px; }
+    .hero p { font-size: 18px; max-width: 480px; margin-bottom: 28px; }
+
+    .hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; border-radius: 30px;
+      text-decoration: none; font-weight: 800; font-size: 16px;
+      transition: transform .2s, box-shadow .2s, background .2s;
+      border: none; cursor: pointer;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--navy); color: #fff; box-shadow: 0 6px 16px rgba(43, 58, 120, .3); }
+    .btn-primary:hover { background: var(--navy-dark); }
+    .btn-outline { background: #fff; color: var(--navy); border: 2px solid var(--navy); }
+    .btn-whatsapp { background: var(--whatsapp); color: #fff; box-shadow: 0 6px 16px rgba(37, 162, 68, .3); }
+    .btn-whatsapp:hover { background: #1d8a38; }
+
+    .hero-visual { position: relative; display: flex; justify-content: center; }
+    .hero-photo {
+      width: min(420px, 100%);
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      border-radius: 220px 220px 30px 30px;
+      border: 6px solid #fff;
+      box-shadow: 0 18px 40px rgba(43, 58, 120, .22);
+    }
+    .hero-logo {
+      position: absolute;
+      left: -10px; bottom: -20px;
+      width: 150px; height: 150px;
+      background: #fff;
+      border-radius: 50%;
+      padding: 8px;
+      box-shadow: 0 10px 24px rgba(43, 58, 120, .2);
+    }
+
+    /* ---------- BENEFICIOS ---------- */
+    .beneficios {
+      background: var(--navy);
+      color: #fff;
+      padding: 28px 8%;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 18px;
+      text-align: center;
+    }
+    .beneficios div { font-weight: 700; }
+    .beneficios small { display: block; font-weight: 400; opacity: .85; }
+
+    /* ---------- PRODUCTOS ---------- */
+    .productos { padding: 80px 8%; text-align: center; }
+    .productos h2, .nosotros h2, .galeria h2, .contacto h2 { font-size: clamp(36px, 5vw, 50px); margin-bottom: 8px; }
+    .subtitulo { max-width: 560px; margin: 0 auto 44px; font-size: 17px; }
+
+    .grid-productos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 30px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .producto {
+      background: #fff;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(43, 58, 120, .1);
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      transition: transform .25s, box-shadow .25s;
+    }
+    .producto:hover { transform: translateY(-6px); box-shadow: 0 16px 34px rgba(43, 58, 120, .18); }
+
+    .producto .foto { position: relative; aspect-ratio: 4 / 5; overflow: hidden; background: var(--pink-soft); }
+    .producto .foto img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+    .producto:hover .foto img { transform: scale(1.05); }
+    .etiqueta {
+      position: absolute; top: 14px; left: 14px;
+      background: var(--pink); color: var(--navy-dark);
+      font-weight: 800; font-size: 13px;
+      padding: 5px 14px; border-radius: 20px;
+    }
+
+    .producto .info { padding: 22px 22px 26px; display: flex; flex-direction: column; flex: 1; }
+    .producto h3 { font-size: 30px; margin-bottom: 6px; }
+    .producto p { font-size: 15px; margin-bottom: 14px; flex: 1; }
+    .piezas { font-size: 13px; color: #7a7a96; margin-bottom: 14px; }
+    .precio { font-size: 26px; font-weight: 800; color: var(--navy); margin-bottom: 14px; }
+    .precio small { font-size: 14px; font-weight: 600; color: #7a7a96; }
+    .producto .btn { justify-content: center; width: 100%; }
+
+    /* ---------- NOSOTROS ---------- */
+    .nosotros {
+      background: var(--pink-bg);
+      padding: 80px 8%;
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 50px;
+      align-items: center;
+    }
+    .nosotros .logo-grande { width: min(340px, 100%); margin: 0 auto; border-radius: 50%; box-shadow: 0 12px 30px rgba(43, 58, 120, .15); }
+    .nosotros p { font-size: 17px; margin-bottom: 14px; }
+    .valores { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+    .valores span {
+      background: #fff; border: 2px solid var(--pink); color: var(--navy);
+      padding: 6px 18px; border-radius: 30px; font-weight: 700;
+    }
+
+    /* ---------- GALERIA ---------- */
+    .galeria { padding: 80px 8%; text-align: center; }
+    .grid-galeria {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .grid-galeria button {
+      border: none; padding: 0; background: none; cursor: zoom-in;
+      border-radius: 20px; overflow: hidden; aspect-ratio: 1;
+      box-shadow: 0 6px 18px rgba(43, 58, 120, .12);
+    }
+    .grid-galeria img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+    .grid-galeria button:hover img { transform: scale(1.07); }
+
+    .lightbox {
+      position: fixed; inset: 0; background: rgba(20, 25, 55, .88);
+      display: none; align-items: center; justify-content: center;
+      z-index: 300; padding: 20px; cursor: zoom-out;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img { max-height: 92vh; max-width: 92vw; border-radius: 16px; }
+
+    /* ---------- CONTACTO ---------- */
+    .contacto {
+      background: linear-gradient(160deg, var(--navy) 0%, var(--navy-dark) 100%);
+      color: #fff;
+      padding: 80px 8% 40px;
+      text-align: center;
+    }
+    .contacto h2 { color: #fff; }
+    .contacto > p { max-width: 520px; margin: 0 auto 28px; opacity: .92; }
+    .datos { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-top: 26px; }
+    .datos a {
+      background: rgba(255, 255, 255, .12); color: #fff; text-decoration: none;
+      padding: 10px 22px; border-radius: 30px; font-weight: 600;
+      transition: background .2s;
+    }
+    .datos a:hover { background: rgba(255, 255, 255, .25); }
+    .copy { margin-top: 50px; font-size: 14px; opacity: .7; border-top: 1px solid rgba(255, 255, 255, .2); padding-top: 22px; }
+
+    /* ---------- WHATSAPP FLOTANTE ---------- */
+    .wa-flotante {
+      position: fixed; right: 20px; bottom: 20px; z-index: 200;
+      background: var(--whatsapp); color: #fff; text-decoration: none;
+      width: 62px; height: 62px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, .3);
+      transition: transform .2s;
+    }
+    .wa-flotante:hover { transform: scale(1.1); }
+    .wa-flotante svg { width: 34px; height: 34px; fill: #fff; }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 860px) {
+      header { flex-direction: column; gap: 8px; padding: 10px 4%; }
+      nav ul { gap: 14px; flex-wrap: wrap; justify-content: center; font-size: 14px; }
+      .hero { grid-template-columns: 1fr; text-align: center; padding: 50px 6% 70px; }
+      .hero p { margin-left: auto; margin-right: auto; }
+      .hero-buttons { justify-content: center; }
+      .hero-logo { width: 110px; height: 110px; left: 4%; }
+      .nosotros { grid-template-columns: 1fr; text-align: center; }
+      .valores { justify-content: center; }
+      section { scroll-margin-top: 120px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ENCABEZADO -->
+  <header>
+    <a href="#inicio" class="logo">
+      <img src="img/logo.jpg" alt="Logo Jirafita Dreams">
+      <span>Jirafita Dreams</span>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#pijamas">Pijamas</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#galeria">Galería</a></li>
+        <li><a href="catalogo.html">Catálogo</a></li>
+        <li><a href="#contacto" class="nav-cta">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- INICIO -->
+  <section class="hero" id="inicio">
+    <div>
+      <span class="tag">🌙 Pijamas para soñar</span>
+      <h1>Jirafita Dreams</h1>
+      <h2>Cómodas, lindas, para ti</h2>
+      <p>Descubre nuestras pijamas con diseños tiernos y telas suaves para que descanses con comodidad y mucho estilo.</p>
+      <div class="hero-buttons">
+        <a href="#pijamas" class="btn btn-primary">Ver pijamas</a>
+        <a href="catalogo.html" class="btn btn-outline" style="border-color:#2b3a78">Catálogo completo</a>
+        <a href="https://wa.me/573209307427?text=Hola%20Jirafita%20Dreams%2C%20quiero%20ver%20sus%20pijamas" class="btn btn-outline" target="_blank" rel="noopener">Escríbenos</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <img class="hero-photo" src="img/osito-pantalon.jpg" alt="Pijama de ositos con lazos rosados">
+      <img class="hero-logo" src="img/logo.jpg" alt="Jirafita Dreams">
+    </div>
+  </section>
+
+  <!-- BENEFICIOS -->
+  <div class="beneficios">
+    <div>🧸 Diseños únicos<small>Estampados tiernos</small></div>
+    <div>☁️ Telas suaves<small>Para descansar mejor</small></div>
+    <div>💬 Pedidos por WhatsApp<small>Atención directa</small></div>
+    <div>🚚 Envíos<small>Pregúntanos por tu ciudad</small></div>
+  </div>
+
+  <!-- PRODUCTOS -->
+  <section class="productos" id="pijamas">
+    <h2>Nuestras pijamas</h2>
+    <p class="subtitulo">Encuentra la pijama perfecta para tus noches. Toca "Pedir" y te atendemos por WhatsApp.</p>
+
+    <div class="grid-productos">
+
+      <!-- PRODUCTO 1 -->
+      <article class="producto">
+        <div class="foto">
+          <img src="img/osito-short.jpg" alt="Pijama osito café: top y short con ositos y lazos" loading="lazy">
+          <span class="etiqueta">Clásica</span>
+        </div>
+        <div class="info">
+          <h3>Pijama Osito Café</h3>
+          <p>Top strapless y short con ositos y lazos. Suave, fresca y perfecta para descansar.</p>
+          <div class="piezas">Incluye: top + short</div>
+          <div class="precio">$25.000 <small>COP</small></div>
+          <a class="btn btn-whatsapp" target="_blank" rel="noopener"
+             href="https://wa.me/573209307427?text=Hola%20Jirafita%20Dreams%2C%20quiero%20pedir%20la%20Pijama%20Osito%20Caf%C3%A9">
+            Pedir por WhatsApp
+          </a>
+        </div>
+      </article>
+
+      <!-- PRODUCTO 2 -->
+      <article class="producto">
+        <div class="foto">
+          <img src="img/stitch-nubes.jpg" alt="Pijama Stitch en las nubes: top, bikini y short" loading="lazy">
+          <span class="etiqueta">Soft</span>
+        </div>
+        <div class="info">
+          <h3>Pijama Stitch Nubes</h3>
+          <p>Estampado de nubes de colores con detalles en rosado y azul. Ligera y muy cómoda.</p>
+          <div class="piezas">Incluye: top + conjunto de dos piezas + short</div>
+          <div class="precio">$35.000 <small>COP</small></div>
+          <a class="btn btn-whatsapp" target="_blank" rel="noopener"
+             href="https://wa.me/573209307427?text=Hola%20Jirafita%20Dreams%2C%20quiero%20pedir%20la%20Pijama%20Stitch%20Nubes">
+            Pedir por WhatsApp
+          </a>
+        </div>
+      </article>
+
+      <!-- PRODUCTO 3 -->
+      <article class="producto">
+        <div class="foto">
+          <img src="img/osito-pantalon.jpg" alt="Pijama ositos rosa: top con vuelo, tanga y pantalón largo" loading="lazy">
+          <span class="etiqueta">Dreams</span>
+        </div>
+        <div class="info">
+          <h3>Pijama Ositos Rosa</h3>
+          <p>Top con vuelo, tanga y pantalón largo con ositos y lazos rosados. Diseño tierno para dormir con estilo.</p>
+          <div class="piezas">Incluye: top + tanga + pantalón</div>
+          <div class="precio">$40.000 <small>COP</small></div>
+          <a class="btn btn-whatsapp" target="_blank" rel="noopener"
+             href="https://wa.me/573209307427?text=Hola%20Jirafita%20Dreams%2C%20quiero%20pedir%20la%20Pijama%20Ositos%20Rosa">
+            Pedir por WhatsApp
+          </a>
+        </div>
+      </article>
+
+    </div>
+  <div style="text-align:center;margin-top:36px">
+      <a href="catalogo.html" class="btn btn-primary">Ver el catálogo completo · 100 diseños</a>
+      <a href="Catalogo-Jirafita-Dreams.pdf" class="btn btn-outline" style="margin-left:10px" download>Descargar PDF</a>
+    </div>
+  </section>
+
+  <!-- NOSOTROS -->
+  <section class="nosotros" id="nosotros">
+    <img class="logo-grande" src="img/logo.jpg" alt="Jirafita Dreams, jirafa durmiendo abrazada a una nube">
+    <div>
+      <h2>Sobre Jirafita Dreams</h2>
+      <p>En Jirafita Dreams queremos convertir cada noche en un momento especial.</p>
+      <p>Creamos pijamas cómodas, suaves y bonitas para que nuestras clientas descansen a gusto. Nuestro emprendimiento combina comodidad, estilo y diseños agradables para toda ocasión.</p>
+      <div class="valores">
+        <span>Cómodas</span>
+        <span>Lindas</span>
+        <span>Para ti</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIA -->
+  <section class="galeria" id="galeria">
+    <h2>Conoce nuestra colección</h2>
+    <p class="subtitulo">Mira un poco del estilo de Jirafita Dreams. Toca una foto para verla grande.</p>
+    <div class="grid-galeria">
+      <button type="button" data-img="img/osito-pantalon.jpg"><img src="img/osito-pantalon.jpg" alt="Pijama ositos rosa" loading="lazy"></button>
+      <button type="button" data-img="img/stitch-nubes.jpg"><img src="img/stitch-nubes.jpg" alt="Pijama Stitch nubes" loading="lazy"></button>
+      <button type="button" data-img="img/osito-short.jpg"><img src="img/osito-short.jpg" alt="Pijama osito café" loading="lazy"></button>
+    </div>
+  </section>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true"><img src="" alt="Foto ampliada"></div>
+
+  <!-- CONTACTO -->
+  <footer class="contacto" id="contacto">
+    <h2>¿Lista para soñar bonito?</h2>
+    <p>Escríbenos por WhatsApp y te ayudamos a elegir tu pijama ideal.</p>
+    <a class="btn btn-whatsapp" target="_blank" rel="noopener"
+       href="https://wa.me/573209307427?text=Hola%20Jirafita%20Dreams%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n">
+      Escribir por WhatsApp
+    </a>
+
+    <div class="datos">
+      <a href="https://wa.me/573209307427" target="_blank" rel="noopener">📱 320 930 7427</a>
+      <a href="mailto:jirafitadreams@gmail.com">✉️ jirafitadreams@gmail.com</a>
+      <a href="https://www.instagram.com/jirafita_dreams09" target="_blank" rel="noopener">📸 @jirafita_dreams09</a>
+    </div>
+
+    <p class="copy">© 2026 Jirafita Dreams · Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- BOTON FLOTANTE WHATSAPP -->
+  <a class="wa-flotante" href="https://wa.me/573209307427?text=Hola%20Jirafita%20Dreams%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16.003 3C8.832 3 3 8.83 3 16c0 2.29.6 4.52 1.74 6.49L3 29l6.7-1.72A12.94 12.94 0 0 0 16.003 29C23.17 29 29 23.17 29 16S23.17 3 16.003 3zm0 23.7c-2 0-3.96-.54-5.67-1.56l-.4-.24-3.98 1.02 1.06-3.88-.27-.4A10.64 10.64 0 0 1 5.3 16c0-5.9 4.8-10.7 10.7-10.7S26.7 10.1 26.7 16s-4.8 10.7-10.7 10.7zm5.9-8c-.32-.16-1.9-.94-2.2-1.04-.3-.1-.5-.16-.72.16-.22.32-.84 1.04-1.03 1.26-.19.22-.38.24-.7.08-.32-.16-1.36-.5-2.6-1.6-.96-.86-1.6-1.9-1.8-2.22-.19-.32-.02-.5.14-.66.14-.14.32-.38.48-.57.16-.19.22-.32.32-.54.1-.22.05-.4-.03-.57-.08-.16-.72-1.74-.99-2.38-.26-.62-.52-.54-.72-.55h-.62c-.22 0-.57.08-.87.4-.3.32-1.14 1.12-1.14 2.72s1.17 3.16 1.33 3.38c.16.22 2.3 3.5 5.56 4.92.78.34 1.38.54 1.86.7.78.25 1.5.21 2.06.13.63-.1 1.9-.78 2.17-1.53.27-.75.27-1.4.19-1.53-.08-.13-.3-.21-.62-.37z"/></svg>
+  </a>
+
+  <script>
+    // Galería: ver foto grande
+    (function () {
+      var box = document.getElementById('lightbox');
+      var img = box.querySelector('img');
+      document.querySelectorAll('.grid-galeria button').forEach(function (b) {
+        b.addEventListener('click', function () {
+          img.src = b.getAttribute('data-img');
+          box.classList.add('open');
+        });
+      });
+      box.addEventListener('click', function () { box.classList.remove('open'); });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') box.classList.remove('open');
+      });
+    })();
+  </script>
+</body>
+</html>
